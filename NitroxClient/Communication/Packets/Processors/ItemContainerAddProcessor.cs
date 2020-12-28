@@ -27,6 +27,12 @@ namespace NitroxClient.Communication.Packets.Processors
             NitroxEntity.SetNewId(item, itemData.ItemId);
             
             itemContainer.AddItem(item, itemData.ContainerId);
+
+            // special Planting helper
+            if( itemData is PlantableItemData plantableData)
+            {
+                item.FixPlantGrowth(plantableData);
+            }
         }
     }
 }
